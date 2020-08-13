@@ -1,6 +1,7 @@
 package Pages;
 
 import Base.BasePage;
+import Constants.ConstantLoginPage;
 import com.thoughtworks.gauge.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -14,9 +15,10 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+    @Step("<mail> ve <password> bilgileriyle login yap")
     public HomePage login(String mail, String password) throws InterruptedException {
-        sendKeys(By.id("txtUserName"), mail);
-        sendKeys(By.id("txtPassword"), password);
+        sendKeys(ConstantLoginPage.MAIL, mail);
+        sendKeys (ConstantLoginPage.PASSWORD,password);
         click(By.id("btnLogin"));
 
         TimeUnit.MILLISECONDS.sleep(1500);

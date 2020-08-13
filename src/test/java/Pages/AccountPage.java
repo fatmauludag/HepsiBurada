@@ -2,6 +2,7 @@ package Pages;
 
 import Base.BasePage;
 import Models.AddressInfo;
+import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,26 +12,27 @@ public class AccountPage extends BasePage {
         super(driver);
     }
 
+    @Step("Hesabımdan adrese tıkla")
     public AccountPage clickAddresses() {
         click(By.cssSelector("#AccountMenu > div > div > div:nth-child(2) > div > div:nth-child(6) > a > div.NavigationMenuItem-3JKIS"));
         return new AccountPage(driver);
     }
-
+@Step("Adresten sonra yeni adres ekle seçimi")
     public AccountPage clickAddNewAddress() {
         click(By.cssSelector(".icon-add-new"));
         return new AccountPage(driver);
     }
-
+@Step("Yeni adres ekranınında Ad bilgisini gir <name>")
     private AccountPage newAddressInfoName(String name) {
         sendKeys(By.id("first-name"), name);
         return new AccountPage(driver);
     }
-
+@Step("Yeni adres ekranınında Soyad bilgisini gir <name>")
     private AccountPage newAddressInfoSurName(String name) {
         sendKeys(By.id("last-name"), name);
         return new AccountPage(driver);
     }
-
+@Step("Yeni adres ekranınında İlçe bilgisini gir <index>")
     private AccountPage newAddressInfoTown(int index) {
         click(By.cssSelector("#form-address > div > div > section:nth-child(3) > div:nth-child(3) > div > div > button"));
 
@@ -64,7 +66,6 @@ public class AccountPage extends BasePage {
         click(By.id(".btn-save-address"));
         return new AccountPage(driver);
     }
-
     public AccountPage fillAddressInfo(AddressInfo addrInfo) {
         return newAddressInfoName(addrInfo.UserName)
                 .newAddressInfoSurName(addrInfo.UserSurname)

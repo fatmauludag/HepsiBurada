@@ -1,7 +1,7 @@
 package Pages;
 
 import Base.BasePage;
-import Constants.ConstantHomePage;
+import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +16,7 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
+@Step("Rasgele bir kategori altında bir alt kategori seçilir")
     public ProductListPage chooseRandomCategory() {
         int mainCategoryIndex = rnd.nextInt(7) + 2;
 

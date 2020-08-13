@@ -1,6 +1,7 @@
 package Base;
 import com.thoughtworks.gauge.AfterScenario;
 import com.thoughtworks.gauge.BeforeScenario;
+import com.thoughtworks.gauge.BeforeSuite;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,8 +15,9 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     public WebDriver driver;
+
     @Before
-    //Scenario
+    @BeforeScenario
     public void prepare(){
         System.setProperty("webdriver.chrome.driver","properties/driver/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -29,8 +31,9 @@ public class BaseTest {
         setDriver(new ChromeDriver(options));
         getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
+
     @After
-    //Scenario
+    @AfterScenario
     public void finish() {
         getDriver().close();
     }

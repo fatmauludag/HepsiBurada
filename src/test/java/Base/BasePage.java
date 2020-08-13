@@ -1,4 +1,5 @@
 package Base;
+import Constants.ConstantBasePage;
 import Pages.AccountPage;
 import Pages.CartPage;
 import Pages.HomePage;
@@ -35,6 +36,7 @@ public class BasePage {
         return driver.findElements(by);
     }
 
+    @Step("home page aç")
     public HomePage callHomePage() {
         driver.get("https://www.hepsiburada.com/");
         return new HomePage(driver);
@@ -54,7 +56,7 @@ public class BasePage {
     }
 
     public AccountPage gotoMyAccount() {
-        click(By.cssSelector("#myAccount > div > div.OldMyAccount-1H-JV > ul > li:nth-child(2) > a"));
+        click(ConstantBasePage.MY_ACCOUNT);
         return new AccountPage(driver);
     }
 
